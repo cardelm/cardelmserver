@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X3]]></item>
+	<item id="Time"><![CDATA[2013-07-11 03:24]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://localhost/demo/dz3utf8/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[卡益联盟服务端]]></item>
+			<item id="identifier"><![CDATA[cardelmserver]]></item>
+			<item id="description"><![CDATA[]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[cardelmserver/]]></item>
+			<item id="copyright"><![CDATA[www.cardelm.com]]></item>
+			<item id="version"><![CDATA[V1.0]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[admincp]]></item>
+					<item id="menu"><![CDATA[后台控制]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[3]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X3]]></item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="status"><![CDATA[状态]]></item>
+				<item id="edit"><![CDATA[编辑]]></item>
+				<item id=""><![CDATA[]]></item>
+				<item id="setting_edit_tips"><![CDATA[卡益联盟服务端基础设置]]></item>
+				<item id="setting_edit"><![CDATA[设置选项]]></item>
+				<item id="setting_edit_succeed"><![CDATA[基础设置成功]]></item>
+				<item id="mokuai_list_tips"><![CDATA[卡益联盟的模块管理]]></item>
+				<item id="mokuai_list"><![CDATA[模块列表]]></item>
+				<item id="add_mokuai"><![CDATA[新建模块]]></item>
+				<item id="mokuai_edit_tips"><![CDATA[编辑模块基本信息]]></item>
+				<item id="mokuai_edit"><![CDATA[模块选项]]></item>
+				<item id="mokuainame"><![CDATA[模块标识]]></item>
+				<item id="mokuainame_comment"><![CDATA[必须是英文，要生成目录]]></item>
+				<item id="mokuaititle"><![CDATA[模块名称]]></item>
+				<item id="mokuaititle_comment"><![CDATA[可以是中文，主要是模块名的显示]]></item>
+				<item id="mokuai_edit_succeed"><![CDATA[模块信息编辑成功]]></item>
+				<item id="mokuaiico"><![CDATA[模块图标]]></item>
+				<item id="mokuaiico_comment"><![CDATA[40X40px，png格式]]></item>
+				<item id="sitegroup_list_tips"><![CDATA[站长组管理]]></item>
+				<item id="sitegroup_list"><![CDATA[站长组列表]]></item>
+				<item id="sitegroupname"><![CDATA[站长组名称]]></item>
+				<item id="sitegroupname_comment"><![CDATA[填写站长组名称，可以为中文]]></item>
+				<item id="add_sitegroup"><![CDATA[新建站长组]]></item>
+				<item id="sitegroup_edit_tips"><![CDATA[编辑站长组]]></item>
+				<item id="sitegroup_edit"><![CDATA[站长组选项]]></item>
+				<item id="sitegroup_edit_succeed"><![CDATA[站长组编辑成功]]></item>
+				<item id="site_list_tips"><![CDATA[站长管理]]></item>
+				<item id="site_list"><![CDATA[站长列表]]></item>
+				<item id="siteurl_comment"><![CDATA[填写站长的网址]]></item>
+				<item id="siteurl"><![CDATA[站长网址]]></item>
+				<item id="add_site"><![CDATA[新建站长]]></item>
+				<item id="site_edit_succeed"><![CDATA[站长编辑成功]]></item>
+				<item id="site_edit_tips"><![CDATA[编辑站长信息]]></item>
+				<item id="site_edit"><![CDATA[站长选项]]></item>
+			</item>
+			<item id="templatelang">
+				<item id=""><![CDATA[]]></item>
+			</item>
+			<item id="installlang">
+				<item id=""><![CDATA[]]></item>
+			</item>
+			<item id="systemlang">
+				<item id="file">
+					<item id=""><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+	</item>
+</root>
