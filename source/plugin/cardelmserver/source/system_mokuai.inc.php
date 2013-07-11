@@ -49,13 +49,20 @@ if($subac == 'mokuailist') {
 		$mokuaiid ? showhiddenfields(array('mokuaiid'=>$mokuaiid)) : '';
 		showsetting(lang('plugin/cardelmserver','mokuainame'),'mokuai_info[mokuainame]',$mokuai_info['mokuainame'],'text','',0,lang('plugin/cardelmserver','mokuainame_comment'),'','',true);
 		showsetting(lang('plugin/cardelmserver','mokuaititle'),'mokuai_info[mokuaititle]',$mokuai_info['mokuaititle'],'text','',0,lang('plugin/cardelmserver','mokuaititle_comment'),'','',true);
-		showsetting(lang('plugin/cardelmserver','mokuaiico'),'mokuai_info[mokuaiico]',$mokuai_info['mokuaiico'],'filetext','',0,lang('plugin/cardelmserver','mokuaiico_comment'),'','',true);
+		showsetting(lang('plugin/cardelmserver','mokuaiico'),'mokuaiico',$mokuai_info['mokuaiico'],'filetext','',0,lang('plugin/cardelmserver','mokuaiico_comment'),'','',true);
 		showsubmit('submit');
 		showtablefooter();
 		showformfooter();
 	}else{
 		if(!htmlspecialchars(trim($_GET['mokuai_info']['mokuainame']))) {
 			cpmsg(lang('plugin/cardelmserver','mokuainame_nonull'));
+		}
+		$mokuaiico = addslashes($_POST['mokuaiico']);
+		if($_FILES['mokuaiico']) {
+			$upload = new discuz_upload();
+			if($upload->init($_FILES['mokuaiico'], 'common') && $upload->save()) {
+				$mokuaiico = $upload->attach['attachment'];
+			}
 		}
 		$datas = $_GET['mokuai_info'];
 		foreach ( $datas as $k=>$v) {
