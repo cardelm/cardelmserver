@@ -172,8 +172,8 @@ if (!file_exists($submod_file)){
 	"\n".
 	"?>");
 }
-require_once $submod_file;
-	
+require_once DISCUZ_ROOT.'source/plugin/cardelmserver/source/'.$submod.'.inc.php';
+
 // 浏览器友好的变量输出
 function dump($var, $echo=true,$label=null, $strict=true){
     $label = ($label===null) ? '' : rtrim($label) . ' ';
