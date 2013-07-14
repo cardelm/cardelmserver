@@ -13,10 +13,10 @@ $apiaction = addslashes($_GET['apiaction']);
 $outdata = array();
 
 if($sign != md5(md5($indata))) {
-	$outdata[] = lang('plugin/yiqixueba_server','api_sign_error');
+	$outdata[] = lang('plugin/cardelmserver','api_sign_error');
 }
 if(!$apiaction) {
-	$outdata[] = lang('plugin/yiqixueba_server','api_apiaction_error');
+	$outdata[] = lang('plugin/cardelmserver','api_apiaction_error');
 }
 
 
@@ -31,7 +31,7 @@ $indata = dunserialize($indata);
 
 if (count($outdata)==0){
 	if ($apiaction == 'install'){
-		$sitekey = DB::result_first("SELECT sitekey FROM ".DB::table('yiqixueba_server_site')." WHERE siteurl='".$indata['siteurl']."'");
+		$sitekey = DB::result_first("SELECT sitekey FROM ".DB::table('cardelmserver_site')." WHERE siteurl='".$indata['siteurl']."'");
 		if($sitekey) {
 			$outdata['sitekey'] = $sitekey;
 		}else{
@@ -40,34 +40,11 @@ if (count($outdata)==0){
 		}
 
 	}elseif($apiaction == 'getmokuailist'){
-		$site_info = DB::fetch_first("SELECT * FROM ".DB::table('yiqixueba_server_site')." WHERE siteurl='".$indata['siteurl']."'");
-		$mokuais = dunserialize($site_info['mokuais']);
-		$query = DB::query("SELECT * FROM ".DB::table('yiqixueba_server_mokuai')." WHERE level=2 order by displayorder asc");
+		//$site_info = DB::fetch_first("SELECT * FROM ".DB::table('cardelmserver_site')." WHERE siteurl='".$indata['siteurl']."'");
+		//$mokuais = dunserialize($site_info['mokuais']);
+		$query = DB::query("SELECT * FROM ".DB::table('cardelmserver_mokuai')." order by mokuaiid asc");
 		while($row = DB::fetch($query)) {
-			$mokuai_info[$row['mokuaiid']] = $row;
-			$query1 = DB::query("SELECT * FROM ".DB::table('yiqixueba_server_mokuai')." WHERE upid=".$row['mokuaiid']." order by displayorder asc");
-			while($row1 = DB::fetch($query1)) {
-				$mokuai_info[$row1['mokuaiid']] = $row1;
-				$query2 = DB::query("SELECT * FROM ".DB::table('yiqixueba_server_mokuaiver')." WHERE mokuaiid=".$row1['mokuaiid']." order by displayorder asc");
-				while($row2 = DB::fetch($query2)) {
-					if(in_array($row2['verid'],$mokuais)) {
-						$upmokuaiid = DB::result_first("SELECT upid FROM ".DB::table('yiqixueba_server_mokuai')." WHERE mokuaiid='".$row2['mokuaiid']."'");
-						$upverid = DB::result_first("SELECT verid FROM ".DB::table('yiqixueba_server_mokuaiver')." WHERE mokuaiid='".$upmokuaiid."'");
-						if(!$outdata[$upverid]) {
-							$outdata[$upverid] = DB::fetch_first("SELECT * FROM ".DB::table('yiqixueba_server_mokuaiver')." WHERE verid='".$upverid."'");
-							$outdata[$upverid]['mokuainame'] = $mokuai_info[$outdata[$upverid]['mokuaiid']]['mokuainame'];
-							$outdata[$upverid]['mokuaititle'] = $mokuai_info[$outdata[$upverid]['mokuaiid']]['mokuaititle'];
-							$outdata[$upverid]['mokuaiico'] = $mokuai_info[$outdata[$upverid]['mokuaiid']]['mokuaiico'];
-							$outdata[$upverid]['upmokuai'] = $mokuai_info[$mokuai_info[$outdata[$upverid]['mokuaiid']]['upid']]['mokuainame'];
-						}
-						$outdata[$row2['verid']] = $row2;
-						$outdata[$row2['verid']]['mokuainame'] = $mokuai_info[$outdata[$row2['verid']]['mokuaiid']]['mokuainame'];
-						$outdata[$row2['verid']]['mokuaititle'] = $mokuai_info[$outdata[$row2['verid']]['mokuaiid']]['mokuaititle'];
-						$outdata[$row2['verid']]['mokuaiico'] = $mokuai_info[$outdata[$row2['verid']]['mokuaiid']]['mokuaiico'];
-						$outdata[$row2['verid']]['upmokuai'] = $mokuai_info[$mokuai_info[$outdata[$row2['verid']]['mokuaiid']]['upid']]['mokuainame'];
-					}
-				}
-			}
+			$outdata[$row['mokuaiid']] = $row;
 		}
 
 	}elseif($apiaction == 'getserverdist'){
@@ -98,16 +75,16 @@ if (count($outdata)==0){
 			$outdata .= '</select><br /><span id="city" class="xi1"></span>';
 		}
 	}elseif($apiaction == 'getweixinsetting'){
-		$site_info = DB::fetch_first("SELECT * FROM ".DB::table('yiqixueba_server_site')." WHERE siteurl ='".$indata['siteurl']."' AND sitekey = '".$indata['sitekey']."'");
+		$site_info = DB::fetch_first("SELECT * FROM ".DB::table('cardelmserver_site')." WHERE siteurl ='".$indata['siteurl']."' AND sitekey = '".$indata['sitekey']."'");
 		if($site_info){
-			if(DB::result_first("SELECT count(*) FROM ".DB::table('yiqixueba_server_wxq123_member')." WHERE membertype='site' AND typeid = ".$site_info['siteid'])==0){
+			if(DB::result_first("SELECT count(*) FROM ".DB::table('cardelmserver_wxq123_member')." WHERE membertype='site' AND typeid = ".$site_info['siteid'])==0){
 				$insertdata['shibiema'] = random(4,1);
 				$insertdata['token'] = random(6);
 				$insertdata['membertype'] = 'site';
 				$insertdata['typeid'] = $site_info['siteid'];
-				DB::insert('yiqixueba_server_wxq123_member', $insertdata);
+				DB::insert('cardelmserver_wxq123_member', $insertdata);
 			}
-			$weixin_info = DB::fetch_first("SELECT * FROM ".DB::table('yiqixueba_server_wxq123_member')." WHERE membertype='site' AND typeid = ".$site_info['siteid']);
+			$weixin_info = DB::fetch_first("SELECT * FROM ".DB::table('cardelmserver_wxq123_member')." WHERE membertype='site' AND typeid = ".$site_info['siteid']);
 			$outdata['shibiema'] = $weixin_info['shibiema'];
 			$outdata['token'] = $weixin_info['token'];
 		}
@@ -131,8 +108,8 @@ if (count($outdata)==0){
 //	if($indata['sitekey']) {
 //	}else{
 //		if($indata['siteurl']){
-//			if (DB::result_first("SELECT count(*) FROM ".DB::table('yiqixueba_server_site')." WHERE siteurl='".$indata['siteurl']."'")==0){
-//				//DB::insert('yiqixueba_server_site',$data);
+//			if (DB::result_first("SELECT count(*) FROM ".DB::table('cardelmserver_site')." WHERE siteurl='".$indata['siteurl']."'")==0){
+//				//DB::insert('cardelmserver_site',$data);
 //			}
 //		}else{
 //		}

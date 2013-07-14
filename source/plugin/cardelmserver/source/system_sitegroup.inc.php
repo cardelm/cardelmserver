@@ -48,6 +48,7 @@ if($subac == 'sitegrouplist') {
 		showtableheader(lang('plugin/cardelmserver','sitegroup_edit'));
 		$sitegroupid ? showhiddenfields(array('sitegroupid'=>$sitegroupid)) : '';
 		showsetting(lang('plugin/cardelmserver','sitegroupname'),'sitegroup_info[sitegroupname]',$sitegroup_info['sitegroupname'],'text','',0,lang('plugin/cardelmserver','sitegroupname_comment'),'','',true);
+		showsetting(lang('plugin/cardelmserver','mokuaitest'),'sitegroup_info[mokuaitest]',$sitegroup_info['mokuaitest'],'radio','',0,lang('plugin/cardelmserver','mokuaitest_comment'),'','',true);
 		showsubmit('submit');
 		showtablefooter();
 		showformfooter();
