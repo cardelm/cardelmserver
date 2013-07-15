@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : 本地
 Source Server Version : 50045
 Source Host           : localhost:3306
-Source Database       : dz3utf8
+Source Database       : dz30
 
 Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2013-07-15 01:16:24
+Date: 2013-07-15 16:15:10
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,6 +112,40 @@ INSERT INTO `pre_cardelmserver_mokuai` VALUES ('4', 'cardelm', '卡益联盟', '
 INSERT INTO `pre_cardelmserver_mokuai` VALUES ('5', 'wxq123', '微信墙123', 'cf/112312rp14hiofsd46zhau.jpg', '配合联盟商家的微信系统', '0', '0');
 
 -- ----------------------------
+-- Table structure for `pre_cardelmserver_mokuaiver`
+-- ----------------------------
+DROP TABLE IF EXISTS `pre_cardelmserver_mokuaiver`;
+CREATE TABLE `pre_cardelmserver_mokuaiver` (
+  `mokuaiverid` smallint(3) unsigned NOT NULL auto_increment,
+  `mokuaivername` char(20) NOT NULL,
+  `createtime` int(10) unsigned NOT NULL,
+  `updatedescription` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `mokuaiid` varchar(255) NOT NULL,
+  PRIMARY KEY  (`mokuaiverid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pre_cardelmserver_mokuaiver
+-- ----------------------------
+INSERT INTO `pre_cardelmserver_mokuaiver` VALUES ('1', 'v1.0', '1373873541', '联盟商家的版本说明', '0', '1');
+
+-- ----------------------------
+-- Table structure for `pre_cardelmserver_page`
+-- ----------------------------
+DROP TABLE IF EXISTS `pre_cardelmserver_page`;
+CREATE TABLE `pre_cardelmserver_page` (
+  `pageid` mediumint(8) unsigned NOT NULL auto_increment,
+  `upmokuai` smallint(3) NOT NULL,
+  `pagetype` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY  (`pageid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pre_cardelmserver_page
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `pre_cardelmserver_site`
 -- ----------------------------
 DROP TABLE IF EXISTS `pre_cardelmserver_site`;
@@ -148,7 +182,7 @@ CREATE TABLE `pre_cardelmserver_site` (
 -- ----------------------------
 -- Records of pre_cardelmserver_site
 -- ----------------------------
-INSERT INTO `pre_cardelmserver_site` VALUES ('1', '0', 'http://localhost/demo/dz3utf8/', '', '', '', '', '', '', '0', '0', '0', '0', '', '', '', '', '', '', '', '1405267200', '0', '', '', '', '1');
+INSERT INTO `pre_cardelmserver_site` VALUES ('1', '0', 'http://localhost/demo/dz3utf8/', '', '', '', 'UTF-8', '', 'X3', '1373644800', '1373731200', '0', '0', '', '', '', '', '', '', '', '1405267200', '0', '', '', '', '1');
 
 -- ----------------------------
 -- Table structure for `pre_cardelmserver_sitegroup`
