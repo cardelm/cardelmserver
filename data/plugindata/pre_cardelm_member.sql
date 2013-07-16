@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2013-07-15 16:15:10
+Date: 2013-07-16 18:03:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -63,6 +63,25 @@ CREATE TABLE `pre_cardelm_setting` (
 -- ----------------------------
 -- Records of pre_cardelm_setting
 -- ----------------------------
+
+-- ----------------------------
+-- Table structure for `pre_cardelmserver_code`
+-- ----------------------------
+DROP TABLE IF EXISTS `pre_cardelmserver_code`;
+CREATE TABLE `pre_cardelmserver_code` (
+  `codeid` mediumint(8) unsigned NOT NULL auto_increment,
+  `type` char(20) NOT NULL,
+  `key` char(40) NOT NULL,
+  `value` text NOT NULL,
+  `zhushi` char(255) NOT NULL,
+  PRIMARY KEY  (`codeid`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of pre_cardelmserver_code
+-- ----------------------------
+INSERT INTO `pre_cardelmserver_code` VALUES ('2', 'admin', 'php', '&lt;?php\r\n?&gt;', '');
+INSERT INTO `pre_cardelmserver_code` VALUES ('3', 'admin', 'test', '&lt;?php\r\nif(jdahsd){\r\n}', 'ע');
 
 -- ----------------------------
 -- Table structure for `pre_cardelmserver_menu`
@@ -136,14 +155,22 @@ INSERT INTO `pre_cardelmserver_mokuaiver` VALUES ('1', 'v1.0', '1373873541', '�
 DROP TABLE IF EXISTS `pre_cardelmserver_page`;
 CREATE TABLE `pre_cardelmserver_page` (
   `pageid` mediumint(8) unsigned NOT NULL auto_increment,
-  `upmokuai` smallint(3) NOT NULL,
-  `pagetype` tinyint(1) unsigned NOT NULL,
+  `mokuaiid` smallint(3) NOT NULL,
+  `pagetype` char(20) NOT NULL,
+  `pagename` char(40) NOT NULL,
+  `pagetitle` char(40) NOT NULL,
+  `description` char(255) NOT NULL,
   PRIMARY KEY  (`pageid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pre_cardelmserver_page
 -- ----------------------------
+INSERT INTO `pre_cardelmserver_page` VALUES ('1', '1', 'admin', 'setting', '设置', '系统自带的设置文件');
+INSERT INTO `pre_cardelmserver_page` VALUES ('2', '1', 'admin', 'cats', '分类管理', '分类管理');
+INSERT INTO `pre_cardelmserver_page` VALUES ('3', '2', 'admin', 'setting', '设置', '系统自带的设置文件');
+INSERT INTO `pre_cardelmserver_page` VALUES ('6', '1', 'admin', 'shoplist', '商家管理', '商家管理');
+INSERT INTO `pre_cardelmserver_page` VALUES ('7', '1', 'index', 'shopdisplay', '联盟商家', '前台的店铺展示');
 
 -- ----------------------------
 -- Table structure for `pre_cardelmserver_site`

@@ -31,6 +31,49 @@ $scriptlang['cardelmserver'] = array(
 	'design' => '设计',
 	'mokuai_design_tips' => '设计模块',
 	'mokuai_design' => '设计选项',
+	'mokuaiver' => '模块版本',
+	'add_mokuaiver' => '增加新的版本',
+	'mokuaivername' => '版本名称',
+	'mokuaiverdescription' => '版本说明',
+	'page_list' => '页面列表',
+	'add_page' => '新建页面',
+	'pagename' => '页面标识',
+	'pagetitle' => '页面名称',
+	'pagedescription' => '页面描述',
+	'pagetype' => '页面类型',
+	'pagetype_admin' => '后台',
+	'pagetype_index' => '前台',
+	'pagetype_ajax' => 'AJAX',
+	'pagetype_api' => 'API',
+	'pagetype_hook' => '插件钩子',
+	'mokuai' => '模块',
+	'page_admin_setting_description' => '系统自带的设置文件',
+	'mokuaipage_edit_succeed' => '模块页面编辑成功',
+	'page_edit_tips' => '页面编辑',
+	'page_edit' => '页面选项',
+	'add_code' => '添加代码',
+	'code:' => '代码',
+	'display:' => '显示',
+	'submit' => '确定',
+	'new' => '新建',
+	'del' => '删',
+	'gai' => '改',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
+	'' => '',
 	'' => '',
 	'' => '',
 	'' => '',
@@ -95,25 +138,25 @@ $scriptlang['cardelmserver'] = array(
 	'' => '',
 	'' => '',
 	'' => '',
-  
+
 );
 
 $templatelang['cardelmserver'] = array(
 	'' => '',
-  
+
 );
 
 $installlang['cardelmserver'] = array(
   '' => '',
-  
+
 );
 
 $systemlang['cardelmserver'] = array(
   'file' => array(
      '' => '',
-     
+
   ),
-  
+
 );
 
 ?>
