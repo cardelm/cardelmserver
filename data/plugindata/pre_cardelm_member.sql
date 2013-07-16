@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : 本地
 Source Server Version : 50045
 Source Host           : localhost:3306
-Source Database       : dz30
+Source Database       : dz3utf8
 
 Target Server Type    : MYSQL
 Target Server Version : 50045
 File Encoding         : 65001
 
-Date: 2013-07-16 18:03:24
+Date: 2013-07-17 03:06:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -73,15 +73,15 @@ CREATE TABLE `pre_cardelmserver_code` (
   `type` char(20) NOT NULL,
   `key` char(40) NOT NULL,
   `value` text NOT NULL,
-  `zhushi` char(255) NOT NULL,
   PRIMARY KEY  (`codeid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of pre_cardelmserver_code
 -- ----------------------------
-INSERT INTO `pre_cardelmserver_code` VALUES ('2', 'admin', 'php', '&lt;?php\r\n?&gt;', '');
-INSERT INTO `pre_cardelmserver_code` VALUES ('3', 'admin', 'test', '&lt;?php\r\nif(jdahsd){\r\n}', 'ע');
+INSERT INTO `pre_cardelmserver_code` VALUES ('2', 'admin', 'php1', '&lt;?php\r\n\r\n?&gt;');
+INSERT INTO `pre_cardelmserver_code` VALUES ('3', 'admin', 'test', '&lt;?php\r\n    if(jdahsd){\r\n    }\r\n?&gt;');
+INSERT INTO `pre_cardelmserver_code` VALUES ('4', 'admin', 'test1', 'sadfsadas');
 
 -- ----------------------------
 -- Table structure for `pre_cardelmserver_menu`

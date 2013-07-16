@@ -128,6 +128,8 @@ function makeadminpagefile($pageid,$canshu=array(),$updatetype=0){
 function this_page($mokuainame,$pagename){
 	return 'plugins&identifier=cardelmserver&pmod=admincp&submod='.$mokuainame.'_'.$pagename;
 }
+
+
 function rmdirs($srcdir) {
 	$dir = @opendir($srcdir);
 	while($entry = @readdir($dir)) {
@@ -144,4 +146,26 @@ function rmdirs($srcdir) {
 	rmdir($srcdir);
 }
 
+
+//得到代码助手
+function getdzcodes($edittype){
+	$return = "";
+	$query = DB::query("SELECT * FROM ".DB::table('cardelmserver_code')." WHERE type = '".$edittype."' order by codeid asc");
+	while($row = DB::fetch($query)) {
+		$value1 = str_replace("'","‘",$row['value']);
+		$value1 = str_replace("\r","\\r",$value1);
+		$value1 = str_replace("\n","\\n",$value1);
+		//$value1 = str_replace("\t","\\t",$value1);
+		$value1 = str_replace("\b","\\b",$value1);
+		$value1 = str_replace("\f","\\f",$value1);
+		$value1 = str_replace("\\","\\\\",$value1);
+		$value1 = str_replace("\$","\\$",$value1);
+		$value1 = str_replace("\'","\\'",$value1);
+		$value1 = str_replace("\"","\\\"",$value1);
+		$return .= '<input type="button" class="btn" onclick="showWindow(\'setnav\', \'plugin.php?id=cardelmserver:ajax&ajaxtype=win&action=codeprat&codeid='.$row['codeid'].'&edittype='.$edittype.'\', \'get\', 0);" value="'.lang('plugin/cardelmserver','gai').'"><a href="###" onclick="insertunit(\''.($value1).'\')">'.dhtmlspecialchars($row['key']).'</a>||'."\n";
+	}
+	$return .= '<input type="button" class="btn" onclick="showWindow(\'setnav\', \'plugin.php?id=cardelmserver:ajax&ajaxtype=win&action=codeprat&edittype='.$edittype.'\', \'get\', 0);" value="'.lang('plugin/cardelmserver','new').'">';
+	return $return;
+
+}//end func
 ?>
