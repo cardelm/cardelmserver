@@ -23,7 +23,7 @@ if(!submitcheck('submit')) {
 	showformheader($this_page.'&subac=settingedit','enctype');
 	showtableheader(lang('plugin/cardelmserver','setting_edit'));
 	$settingid ? showhiddenfields(array('settingid'=>$settingid)) : '';
-	showsetting(lang('plugin/cardelmserver','settingname'),'setting_info[settingname]',$setting_info['settingname'],'text','',0,lang('plugin/cardelmserver','settingname_comment'),'','',true);
+	showsetting(lang('plugin/cardelmserver','serverurl'),'setting_info[serverurl]',$setting_info['serverurl'],'text','',0,lang('plugin/cardelmserver','serverurl_comment'),'','',true);
 	showsubmit('submit');
 	showtablefooter();
 	showformfooter();

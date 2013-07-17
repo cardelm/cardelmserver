@@ -28,10 +28,10 @@ if($subac == 'sitegrouplist') {
 		while($row = DB::fetch($query)) {
 			showtablerow('', array('class="td25"','class="td23"', 'class="td23"', 'class="td23"','class="td25"',''), array(
 				"<input class=\"checkbox\" type=\"checkbox\" name=\"delete[]\" value=\"$row[sitegroupid]\">",
-			$row['sitegroupname'],
-			$row['sitegroupname'],
-			$row['sitegroupname'],
-			"<input class=\"checkbox\" type=\"checkbox\" name=\"statusnew[".$row['sitegroupid']."]\" value=\"1\" ".($row['status'] > 0 ? 'checked' : '').">",
+				$row['sitegroupname'],
+				$row['sitegroupname'],
+				$row['sitegroupname'],
+				"<input class=\"checkbox\" type=\"checkbox\" name=\"statusnew[".$row['sitegroupid']."]\" value=\"1\" ".($row['status'] > 0 ? 'checked' : '').">",
 				"<a href=\"".ADMINSCRIPT."?action=".$this_page."&subac=sitegroupedit&sitegroupid=$row[sitegroupid]\" class=\"act\">".lang('plugin/cardelmserver','edit')."</a>",
 			));
 		}
@@ -40,6 +40,10 @@ if($subac == 'sitegrouplist') {
 		showtablefooter();
 		showformfooter();
 	}else{
+		foreach(getgpc('statusnew') as $k=>$v ){
+			DB::update('cardelmserver_sitegroup', array('status'=>1),array('sitegroupid'=>$k));
+		}
+		cpmsg(lang('plugin/cardelmserver', 'sitegroup_edit_succeed'), 'action='.$this_page.'&subac=sitegrouplist', 'succeed');
 	}
 }elseif($subac == 'sitegroupedit') {
 	if(!submitcheck('submit')) {
